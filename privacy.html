@@ -3,21 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>プライバシーポリシー | Portfolio Insight Monthly Report</title>
-  <style>body{max-width:720px;margin:48px auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.8;color:#172536}a{color:#087f68}</style>
+  <meta name="description" content="Personal Workflow Automationのプライバシーポリシーです。">
+  <title>プライバシーポリシー | Personal Workflow Automation</title>
+  <style>
+    :root { color-scheme: light; }
+    body {
+      max-width: 760px;
+      margin: 48px auto;
+      padding: 0 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.8;
+      color: #172536;
+      background: #fff;
+    }
+    h1, h2, h3 { line-height: 1.35; }
+    h2 { margin-top: 2rem; }
+    a { color: #087f68; }
+    a:focus-visible { outline: 3px solid #f0a202; outline-offset: 3px; }
+  </style>
 </head>
 <body>
-  <h1>プライバシーポリシー</h1>
-  <p>Portfolio Insight Monthly Reportは、所有者本人だけが利用する個人用アプリです。</p>
-  <h2>利用する情報</h2>
-  <p>月次レポートの作成・保存・通知に必要な範囲で、本人のGoogle Drive上のファイルとGmail送信機能を利用します。</p>
-  <h2>情報の共有</h2>
-  <p>取得した情報を第三者へ販売、貸与、提供しません。レポートおよび元データの閲覧範囲は本人のみに限定します。</p>
-  <h2>保存と削除</h2>
-  <p>生成物は本人のGoogle Driveに保存され、本人がGoogle Drive上で管理・削除できます。認証情報はGitHub Actionsの暗号化されたSecretsで管理します。</p>
-  <h2>連絡先</h2>
-  <p>問い合わせ先: corporal.g66@gmail.com</p>
-  <p>制定日: 2026年9月2日</p>
-  <p><a href="index.html">ホームへ戻る</a></p>
+  <main>
+    <h1>プライバシーポリシー</h1>
+    <p>Personal Workflow Automation（以下「本アプリ」）は、個人開発者 Kazuki Akai が運営し、所有者本人だけが利用する個人用の自動化アプリ群です。</p>
+
+    <h2>取得・利用する情報</h2>
+    <p>本アプリは、所有者が有効にした機能を実行するため、次のGoogleユーザーデータを利用します。</p>
+
+    <h3>ポートフォリオ月次レポート</h3>
+    <ul>
+      <li>所有者が指定したDrive上の保有銘柄・時価総額データを読み取ります。</li>
+      <li>月次の入力データ、統合データおよびHTMLレポートを、指定されたDriveフォルダに作成・更新します。</li>
+      <li>Google Apps Scriptが生成済みレポートをDriveから読み取り、所有者本人だけが利用できるWebアプリに表示します。</li>
+      <li>レポートのリンクまたは処理失敗の情報を、所有者が指定した宛先へGmail APIで送信します。メールの閲覧・変更は行いません。</li>
+    </ul>
+
+    <h3>業務週報</h3>
+    <ul>
+      <li>所有者が指定したDriveの週報フォルダにある設定ファイルと対象週のファイルを読み取ります。</li>
+      <li>生成した週報、バックアップおよび次週用の入力ファイルを同じ週報フォルダ内に作成・更新します。同期対象から削除されたアプリ管理ファイルはDriveのゴミ箱へ移動する場合があります。</li>
+      <li>Slackの指定チャンネルにある週報投稿を入力として使用します。この機能はGmailを使用しません。</li>
+    </ul>
+
+    <h3>国内株式決算情報収集</h3>
+    <ul>
+      <li>Drive上の明示された保有銘柄ファイル1件を読み取り、TDnetおよび企業公式サイトの公開情報と照合します。</li>
+      <li>対象となる決算・IR資料のPDF、取得履歴および実行ログを、指定されたDriveフォルダに作成・更新します。保存済み資料を自動削除しません。</li>
+      <li>新着資料のDriveリンク・公式URL、または重大な処理失敗の情報を、所有者が指定した宛先へGmail APIで送信します。メールの閲覧・変更は行いません。</li>
+    </ul>
+
+    <h2>OAuth権限の範囲</h2>
+    <p>各機能は、その実行に必要なOAuth認証情報と権限だけを使用します。</p>
+    <ul>
+      <li>ポートフォリオ月次レポートと業務週報は、本人が既に作成したDriveファイルを更新するため、OAuth権限上はDrive全体を読み書きできる権限を使用します。ただし、実装が処理するのは所有者が設定したフォルダID・ファイルIDと、その配下でアプリが管理するファイルだけです。</li>
+      <li>国内株式決算情報収集は、アプリが作成・選択したファイルを管理する権限と、指定された保有銘柄ファイルを読み取る権限を使用します。</li>
+      <li>Gmailを使用する機能は送信専用権限だけを使用します。</li>
+    </ul>
+
+    <h2>情報の共有</h2>
+    <p>Googleユーザーデータを販売せず、広告、第三者のマーケティング、信用評価には使用しません。自動処理にはGitHub Actionsを使用し、ポートフォリオ月次レポートのスケジュール管理と本人限定表示にはGoogle Apps Scriptを使用します。業務週報の入力取得にはSlackを使用します。Gmail通知は所有者が設定した宛先にだけ送信します。これらのサービスには、各処理、表示または通知に必要な最小限の情報だけを送信します。</p>
+
+    <h2>保存と保護</h2>
+    <p>生成したレポート、取得したPDF、処理履歴および一部の実行サマリーは、所有者本人のGoogle Driveに保存されます。自動処理中の一時ファイルはGitHub Actionsの一時実行環境で処理し、成果物としてアップロードせず、実行終了後に保持しません。Google OAuthの認証情報はGitHub Actionsの暗号化されたEnvironment Secretsで保護し、ソースコードや実行ログには記録しません。</p>
+
+    <h2>保存期間と削除</h2>
+    <p>Google Driveの成果物と実行ログは、所有者が削除するまで保持し、本人がDrive上で管理・削除できます。国内株式決算情報収集のDrive実行ログは、1年を目安に所有者が手動で削除します。GitHub Actionsの実行ログは各リポジトリの設定に従い原則90日以内保持され、所有者はGitHubのActions画面から期限前にも削除できます。認証情報や取得したファイル本文はActionsログへ記録しません。</p>
+    <p>データまたは実行ログの削除に関する依頼は、下記の連絡先で受け付けます。</p>
+
+    <h2>アクセス権の解除</h2>
+    <p>所有者は、Googleアカウントの「サードパーティ製のアプリとサービス」設定から、いつでも本アプリのアクセス権を確認・解除できます。解除後は、Googleデータを使用するワークフローが実行できなくなります。</p>
+
+    <h2>Google API Services User Data Policyへの準拠</h2>
+    <p>Google APIから受け取った情報の利用および他のアプリへの転送は、限定的な使用に関する要件を含む<a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>に準拠します。</p>
+
+    <h2>本ポリシーの変更</h2>
+    <p>利用する機能やデータの取り扱いを変更した場合は、本ページを更新します。</p>
+
+    <h2>連絡先</h2>
+    <p>問い合わせ先: corporal.g66@gmail.com</p>
+    <p>制定日: 2026年9月2日<br>最終更新日: 2026年9月5日</p>
+    <p><a href="index.html">ホームへ戻る</a></p>
+  </main>
 </body>
 </html>
