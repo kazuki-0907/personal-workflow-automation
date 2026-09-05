@@ -3,13 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio Insight Monthly Report</title>
-  <style>body{max-width:720px;margin:48px auto;padding:0 20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.8;color:#172536}a{color:#087f68}</style>
+  <meta name="description" content="Personal Workflow Automationは、所有者本人の定型作業を自動化する個人用アプリです。">
+  <title>Personal Workflow Automation</title>
+  <style>
+    :root { color-scheme: light; }
+    body {
+      max-width: 760px;
+      margin: 48px auto;
+      padding: 0 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.8;
+      color: #172536;
+      background: #fff;
+    }
+    h1, h2, h3 { line-height: 1.35; }
+    h2 { margin-top: 2rem; }
+    a { color: #087f68; }
+    a:focus-visible { outline: 3px solid #f0a202; outline-offset: 3px; }
+  </style>
 </head>
 <body>
-  <h1>Portfolio Insight Monthly Report</h1>
-  <p>個人利用のための国内株式ポートフォリオ月次レポート作成アプリです。</p>
-  <p>Google Drive上の本人所有データを読み書きし、作成したレポートの案内を本人宛てにメール送信します。第三者には提供しません。</p>
-  <p><a href="privacy.html">プライバシーポリシー</a></p>
+  <main>
+    <h1>Personal Workflow Automation</h1>
+    <p>Personal Workflow Automationは、個人開発者 Kazuki Akai が所有者本人のために運営する、業務・投資情報整理の自動化アプリ群です。</p>
+
+    <h2>提供する機能</h2>
+    <ul>
+      <li><strong>ポートフォリオ月次レポート:</strong> Google Driveの保有銘柄・時価総額データと公開市場データからレポートを作成し、Driveへ保存してGmailで本人へ通知します。生成済みレポートは、本人限定のGoogle Apps Script Webアプリで表示します。</li>
+      <li><strong>業務週報:</strong> Slackの対象投稿とGoogle Driveの週報設定を基に週報を作成し、Driveの指定フォルダへ保存します。この機能はGmailを使用しません。</li>
+      <li><strong>国内株式決算情報収集:</strong> Driveの保有銘柄データとTDnet・企業公式サイトの公開情報を照合し、対象PDF・取得履歴・実行ログをDriveへ保存して、新着または重大な障害をGmailで本人へ通知します。</li>
+    </ul>
+
+    <h2>Googleデータの利用</h2>
+    <p>各機能は、その実行に必要なOAuth認証情報とGoogle API権限だけを使用します。既存の本人作成ファイルを更新する機能では、OAuth権限上はGoogle Drive全体を読み書きできる権限を使用しますが、実装では所有者が設定したフォルダID・ファイルIDと、その配下で作成したファイルだけを処理します。</p>
+    <p>詳しい取り扱いについては、<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</p>
+  </main>
 </body>
 </html>
